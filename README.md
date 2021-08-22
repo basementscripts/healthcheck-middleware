@@ -69,7 +69,7 @@ This tool has become a vital tool for us, we've decided to share it with you.
 ```ts
 import { express } from 'express'
 import { createServer } from 'http'
-import { healthcheck } from '@mygaygetaway/healthcheck-middleware'
+import { healthcheck } from '@basementscripts/healthcheck-middleware'
 
 const app = express()
 
@@ -87,7 +87,7 @@ const server = createServer(app)
 add a service agent to the healthcheck
 
 ```ts
-import { registerStatusAgent } from '@mygaygetaway/healthcheck-middleware'
+import { registerStatusAgent } from '@basementscripts/healthcheck-middleware'
 import amqp, { Connection } from 'amqplib'
 
 export interface BrokerConnectionOptions {

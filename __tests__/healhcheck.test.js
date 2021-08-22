@@ -1,4 +1,4 @@
-const { Healthcheck } = require('../dist')
+const { Healthcheck } = require('../lib')
 
 const instanceConfig = {
 	pid: 'test',

@@ -1,4 +1,4 @@
-const { uuid, stripEmptyOrNull } = require('../dist/utils')
+const { uuid, stripEmptyOrNull } = require('../lib/utils')
 
 describe('Healthcheck Utils', () => {
 	test('it renders a uuid', () => {

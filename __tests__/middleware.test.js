@@ -1,5 +1,5 @@
 const request = require('supertest')
-const { healthcheck, Healthcheck } = require('../dist')
+const { healthcheck, Healthcheck } = require('../lib')
 
 describe('Healthcheck Middleware', () => {
 	test('it connects the middlware', () => {

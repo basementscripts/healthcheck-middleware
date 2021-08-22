@@ -1,4 +1,4 @@
-const { StatusAgent } = require('../dist')
+const { StatusAgent } = require('../lib')
 
 const delay = (offset = 1) => {
 	return new Promise((resolve) => {

@@ -1,22 +1,22 @@
 {
 	"name": "@basementscripts/healthcheck-middleware",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Node.js Express Middleware for healthcheck",
-	"main": "dist/index.js",
-	"typings": "dist/index.d.ts",
+	"main": "lib/index.js",
+	"typings": "lib/index.d.ts",
 	"directories": {
-		"lib": "dist",
+		"lib": "lib",
 		"test": "__tests__"
 	},
 	"files": [
-		"dist"
+		"lib"
 	],
 	"scripts": {
 		"build": "yarn tsc",
-		"tsc": "rm -rf dist && tsc",
+		"tsc": "rm -rf lib && tsc",
 		"watch": "nodemon --watch src --ext ts --exec yarn tsc",
 		"test": "NODE_ENV=test jest --forceExit --detectOpenHandles --coverage --verbose --watchAll",
-		"coverage": "coverage --reporter=text-summary dist/index.js",
+		"coverage": "coverage --reporter=text-summary lib/index.js",
 		"badge": "make-coverage-badge --output-path ./badge.svg"
 	},
 	"repository": "git@github.com:basementscripts/healthcheck-middleware.git",
@@ -68,7 +68,7 @@
 	},
 	"jest": {
 		"collectCoverageFrom": [
-			"dist/*.js",
+			"lib/*.js",
 			"!**/node_modules/**",
 			"!src/**"
 		],

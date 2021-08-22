@@ -1,4 +1,4 @@
-const { Healthcheck, registerStatusAgent } = require('../dist')
+const { Healthcheck, registerStatusAgent } = require('../lib')
 
 describe('Healthcheck Register Status Agent', () => {
 	test('it registers a status agent', () => {
