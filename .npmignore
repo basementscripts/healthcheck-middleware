@@ -1,0 +1,8 @@
+.github
+bin
+devops
+src
+.editorconfig
+.npmrc
+tsconfig.json
+node_modules

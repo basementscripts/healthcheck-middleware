@@ -1,6 +1,6 @@
 {
 	"name": "@basementscripts/healthcheck-middleware",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Node.js Express Middleware for healthcheck",
 	"main": "lib/index.js",
 	"typings": "lib/index.d.ts",
@@ -15,7 +15,8 @@
 		"build": "yarn tsc",
 		"tsc": "rm -rf lib && tsc",
 		"watch": "nodemon --watch src --ext ts --exec yarn tsc",
-		"test": "NODE_ENV=test jest --forceExit --detectOpenHandles --coverage --verbose --watchAll",
+		"test": "NODE_ENV=test jest --forceExit --detectOpenHandles --coverage --verbose",
+		"test:watch": "yarn test --watchAll",
 		"coverage": "coverage --reporter=text-summary lib/index.js",
 		"badge": "make-coverage-badge --output-path ./badge.svg"
 	},
