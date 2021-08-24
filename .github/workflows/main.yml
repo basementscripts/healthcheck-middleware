@@ -37,4 +37,3 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
           token: ${{ secrets.NPM_TOKEN }}
-          registry: https://npm.pkg.github.com
