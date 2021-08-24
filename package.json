@@ -1,6 +1,6 @@
 {
 	"name": "@basementscripts/healthcheck-middleware",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "Node.js Express Middleware for healthcheck",
 	"main": "lib/index.js",
 	"typings": "lib/index.d.ts",
@@ -21,9 +21,6 @@
 		"badge": "make-coverage-badge --output-path ./badge.svg"
 	},
 	"repository": "git@github.com:basementscripts/healthcheck-middleware.git",
-	"publishConfig": {
-		"registry": "https://npm.pkg.github.com/"
-	},
 	"author": {
 		"name": "BasementScripts",
 		"email": "basementscripts.io@gmail.com"
