@@ -4,7 +4,7 @@
 
 Node.js Express Middleware for healthcheck
 
-A heathcheck can be a valuable tool in the arsenal of disaster recovery and overall performance. A typical healthcheck is a simple `"Ok"` response from a `REST` endpoint.
+A heathcheck can be a valuable tool in the arsenal of disaster recovery and overall performance. A typical healthcheck is a simple status code `200` `"Ok"` response from a `REST` endpoint.
 
 Todays infrastructure, microservices or applications (e.g. Lerna) exsisting of a bundle of microservices, provide a challenge to proper monitoring of services. With that being said, a simple `"Ok"` means nothing other that the app is standing with a reachable point. In an express app, that is not difficult to achieve.
 
@@ -28,7 +28,7 @@ response
 Ok
 ```
 
-### Healthcheck Verbose
+### Healthcheck Verbose (**_requires authentication_**)
 
 ```bash
 $ curl -X POST http://localhost:3001/health
@@ -141,4 +141,66 @@ example health check output
 		}
 	]
 }
+```
+
+### Authentication
+
+```ts
+import { express, Request } from 'express'
+import { createServer } from 'http'
+import { healthcheck } from '@basementscripts/healthcheck-middleware'
+import validateAuthToken from '@services/auth/validateAuthToken'
+
+const app = express()
+
+const headhcheckAuthenticationHandler = (headers: Request['headers']) => {
+	const token = headers.authorization.replace(/Bearer /, '') // extract bearer token
+	return validateAuthToken(token)
+}
+
+// apply middleware
+app.use(
+	healthcheck({
+		pid: process.pid,
+		appName: 'api',
+		region: 'us-east-1',
+		authenticate: headhcheckAuthenticationHandler
+	})
+)
+const server = createServer(app)
+```
+
+### Extended Configuration
+
+Additional configuration options can be added to the originating healthcheck object
+
+```ts
+import { express, Request } from 'express'
+import { createServer } from 'http'
+import { healthcheck } from '@basementscripts/healthcheck-middleware'
+import validateAuthToken from '@services/auth/validateAuthToken'
+
+const app = express()
+
+const headhcheckAuthenticationHandler = (headers: Request['headers']) => {
+	const token = headers.authorization.replace(/Bearer /, '') // extract bearer token
+	if (token) {
+		return validateAuthToken(token)
+	}
+	throw new Error('Unauthorized')
+}
+
+// apply middleware
+app.use(
+	healthcheck({
+		pid: process.pid,
+		appName: 'api',
+		region: 'us-east-1',
+		cluster: 'api-ecs-cluster-us-east-1',
+		service: 'api-ecs-service-us-east-1',
+		authenticate: headhcheckAuthenticationHandler,
+		...etc
+	})
+)
+const server = createServer(app)
 ```

@@ -1,3 +1,7 @@
+import { Request } from 'express'
+
+export type AuthenticationHandler = (headers: Request['headers']) => Promise<boolean>
+
 export enum AgentStatus {
 	UP = 'Ok',
 	DOWN = 'Down'
@@ -8,7 +12,7 @@ export interface HealthcheckOptions {
 	path?: string
 	appName?: string
 	region?: string
-	authenticate?: any
+	authenticate?: AuthenticationHandler
 }
 
 export interface HealthcheckStatus extends HealthcheckOptions {

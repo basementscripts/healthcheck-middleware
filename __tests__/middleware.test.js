@@ -6,7 +6,8 @@ describe('Healthcheck Middleware', () => {
 		healthcheck({
 			pid: 'test',
 			appName: 'test',
-			region: 'test'
+			region: 'test',
+			authentication: (headers) => true
 		})
 
 		const { status } = Healthcheck.getInstance()
@@ -25,7 +26,7 @@ describe('Healthcheck Middleware', () => {
 
 		expect(res.body).toEqual('Ok')
 
-		const post = await (await request(wares).post('/health')).send({})
+		const post = await request(wares).post('/health').send({})
 
 		expect(res.body).toBeDefined()
 	})
